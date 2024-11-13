@@ -8,6 +8,9 @@ const AddToMyPurchases = async (req, res) => {
     if(isNaN(quantity) || !quantity){
         return res.status(400).json({ success: false, message: "please enter a valid quantity" });
     }
+     if(!contenance){
+        return res.status(400).json({ success: false, message: "please select a size" });
+    }
     try {
         const user = await User.findById(userId)
         if (!user) {
